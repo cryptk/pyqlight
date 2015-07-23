@@ -4,8 +4,9 @@ pylight
 RTFM
 ====
 ```
-usage: wrapper.py [-h] [-r [STATE]] [-y [STATE]] [-g [STATE]] [-b [STATE]]
-                  [-w [STATE]] [-a [STATE]] [-t [TONE]] [-d [DURATION]]
+usage: pylight-control.py [-h] [-r [STATE]] [-y [STATE]] [-g [STATE]]
+                          [-b [STATE]] [-w [STATE]] [-a [STATE]] [-t [TONE]]
+                          [-d [DURATION]]
 
 control a Q-Light warning tower. All lamps should have red, yellow and green
 lights available. Blue and white lights may or may not be available depending
