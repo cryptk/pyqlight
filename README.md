@@ -1,4 +1,9 @@
-# pylight
+pylight
+=======
+
+RTFM
+====
+```
 A pure python method to interact with Q-Light warning light towers
 usage: wrapper.py [-h] [-r [RED]] [-y [YELLOW]] [-g [GREEN]] [-b [BLUE]]
                   [-w [WHITE]] [-a [ALL_LIGHTS]]
@@ -29,3 +34,4 @@ optional arguments:
                         Duration to play tone (in ms).
 
 Written by Chris Jowett, cryptk@gmail.com
+```
