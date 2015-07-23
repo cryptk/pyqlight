@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from pylight import QLight
 from collections import OrderedDict
-from argparse import ArgumentParser
+from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 
 if __name__ == '__main__' and __package__ is None:
 
@@ -9,21 +9,34 @@ if __name__ == '__main__' and __package__ is None:
                             "All lamps should have red, yellow and green "
                             "lights available.  Blue and white lights may or "
                             "may not be available depending on exact model.",
-                            epilog="Written by Chris Jowett, cryptk@gmail.com")
-    PARSER.add_argument("-r", "--red", help="Desired state of red lamp.",
-                        type=str, nargs='?', default='pass')
-    PARSER.add_argument("-y", "--yellow", help="Desired state of yellow lamp.",
-                        type=str, nargs='?', default='pass')
-    PARSER.add_argument("-g", "--green", help="Desired state of green lamp.",
-                        type=str, nargs='?', default='pass')
-    PARSER.add_argument("-b", "--blue", help="Desired state of blue lamp.",
-                        type=str, nargs='?', default='pass')
-    PARSER.add_argument("-w", "--white", help="Desired state of white lamp.",
-                        type=str, nargs='?', default='pass')
-    PARSER.add_argument("-a", "--all-lights", help="State of all lamps.",
-                        type=str, nargs='?')
-    PARSER.add_argument("-t", "--tone", help="Desired tone to play.",
-                        type=str, nargs='?', default='pass',
+                            epilog="Written by Chris Jowett, cryptk@gmail.com",
+                            formatter_class=ArgumentDefaultsHelpFormatter)
+    LIGHTS = PARSER.add_argument_group('Light Controls', 'Valid states are '
+                                       '"off", "on", "blink", "pass"')
+    LIGHT_CHOICES = ['off','on','blink','pass']
+    LIGHTS.add_argument("-r", "--red", help="Desired state of red lamp.",
+                        type=str, nargs='?', default='pass', metavar='STATE',
+                        choices=LIGHT_CHOICES)
+    LIGHTS.add_argument("-y", "--yellow", help="Desired state of yellow lamp.",
+                        type=str, nargs='?', default='pass', metavar='STATE',
+                        choices=LIGHT_CHOICES)
+    LIGHTS.add_argument("-g", "--green", help="Desired state of green lamp.",
+                        type=str, nargs='?', default='pass', metavar='STATE',
+                        choices=LIGHT_CHOICES)
+    LIGHTS.add_argument("-b", "--blue", help="Desired state of blue lamp.",
+                        type=str, nargs='?', default='pass', metavar='STATE',
+                        choices=LIGHT_CHOICES)
+    LIGHTS.add_argument("-w", "--white", help="Desired state of white lamp.",
+                        type=str, nargs='?', default='pass', metavar='STATE',
+                        choices=LIGHT_CHOICES)
+    LIGHTS.add_argument("-a", "--all-lights", help="State of all lamps.",
+                        type=str, nargs='?', metavar='STATE',
+                        choices=LIGHT_CHOICES)
+    TONE = PARSER.add_argument_group('Tone Controls', 'valid tone options are '
+                                     '"off", "tone_1", "tone_2", "tone_3", '
+                                     '"tone_4", "tone_5", "pass"')
+    TONE.add_argument("-t", "--tone", help="Desired tone to play.",
+                        type=str, nargs='?', metavar='TONE', default='pass',
                         choices=['off',
                                  'tone_1',
                                  'tone_2',
@@ -31,9 +44,9 @@ if __name__ == '__main__' and __package__ is None:
                                  'tone_4',
                                  'tone_5',
                                  'pass'])
-    PARSER.add_argument("-d", "--duration",
+    TONE.add_argument("-d", "--duration",
                         help="Duration to play tone (in ms).",
-                        type=int, nargs='?')
+                        type=int, nargs='?', default=0)
     ARGS = PARSER.parse_args()
     QL = QLight()
     if ARGS.all_lights is not None:
@@ -47,7 +60,5 @@ if __name__ == '__main__' and __package__ is None:
             ('white', ARGS.white)
             ])
         QL.update_lamp()
-    if ARGS.duration is not None:
+    if ARGS.tone:
         QL.set_sound(ARGS.tone, ARGS.duration)
-    else:
-        QL.set_sound(ARGS.tone)
