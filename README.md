@@ -2,7 +2,21 @@ pyqlight
 =======
 
 A python interface for Q-Light warning light towers.  Includes both a module
-which can be included as well as a command line utility suitable for one-shot controls.
+which can be included as well as a command line utility suitable for one-shot
+controls.
+
+LIMITATIONS
+===========
+
+This code may or may not work on a mac.
+It has only ever been tested on Ubuntu (15.04).
+
+If more than one lamp is connected to the system, there is no way to determine
+which one you are addressing.  Without a second lamp to test with, I cannot
+reliably add this functionality.
+
+There is no way to poll the light for it's current state that I can determine.
+This appears to be a limitation of the Q-Lights themselves.
 
 USAGE
 =====
