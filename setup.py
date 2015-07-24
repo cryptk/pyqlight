@@ -18,7 +18,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='pylight',
+    name='pyqlight',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
@@ -29,7 +29,7 @@ setup(
     long_description=long_description,
 
     # The project's main homepage.
-    url='https://github.com/cryptk/pylight',
+    url='https://github.com/cryptk/pyqlight',
 
     # Author details
     author='Chris Jowett',
@@ -99,7 +99,7 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points={
         'console_scripts': [
-            'pylight=pylight.command_line:main',
+            'pyqlight=pyqlight.command_line:main',
         ],
     },
 )

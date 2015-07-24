@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from pylight import QLight
+from pyqlight import QLight
 from collections import OrderedDict
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 

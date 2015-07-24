@@ -13,4 +13,4 @@ Limitations:
     determine.  This appears to be a limitation of the Q-Lights themselves.
 """
 
-from pylight import QLight
+from pyqlight import QLight
