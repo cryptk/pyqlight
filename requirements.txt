@@ -1,2 +1,2 @@
 argparse==1.2.1
-pyusb==1.0.0b2
+hid==0.1.0

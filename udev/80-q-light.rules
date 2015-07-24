@@ -1,0 +1,2 @@
+# This rule will cause the /dev/hidraw* device for the qlight to be accessible by the plugdev group, which is enough for most distros to access it
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="04d8", ATTRS{idProduct}=="e73c", MODE="0664", GROUP="plugdev"

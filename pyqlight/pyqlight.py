@@ -12,8 +12,7 @@ Limitations:
     There is no way to poll the light for it's current state that I can
     determine.  This appears to be a limitation of the Q-Lights themselves.
 """
-import usb.core
-import usb.util
+import hid
 
 from collections import OrderedDict
 from time import sleep
@@ -83,28 +82,10 @@ class QLight(object):
             'pass': '64'
             }
         self.sound = 'pass'
-        self._usbdev = usb.core.find(idVendor=0x04d8, idProduct=0xe73c)
-        if self._usbdev is None:
-            raise ValueError('Device not found')
 
-        if self._usbdev.is_kernel_driver_active(0):
-            self._usbdev.detach_kernel_driver(0)
-        self._usbdev.set_configuration()
+        self._usbdev = hid.Device(vid=1240, pid=59196)
+        assert type(self._usbdev) is hid.Device
 
-        cfg = self._usbdev.get_active_configuration()
-        intf = cfg[(0, 0)]
-
-        self._usbep = usb.util.find_descriptor(
-            intf,
-            # match the first OUT endpoint
-            custom_match=lambda e: \
-            usb.util.endpoint_direction(e.bEndpointAddress) == \
-            usb.util.ENDPOINT_OUT)
-
-        assert self._usbep is not None
-
-    def __del__(self):
-        self._usbdev.reset()
 
     def update_lamp(self):
         """Generate the hexadecimal state string and update the lamp.
@@ -162,7 +143,7 @@ class QLight(object):
         header = '5700'
         footer = '400054f300000000'
         payload = header+msg+footer
-        self._usbep.write(payload.decode("hex"))
+        self._usbdev.write(payload.decode("hex"))
 
     def set_all_lights(self, state):
         """Set all lights to the same state.
