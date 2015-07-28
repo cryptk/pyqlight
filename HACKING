@@ -1,0 +1,6 @@
+Style and Quality Guidelines
+============================
+- Any pull requests should be compliant with both pep8 and pep257 utilities with no overrides.
+- Any pull requests should have a 10/10 rating with pylint
+
+- There can be exceptions to these if you have a good reason, state your case within the PR

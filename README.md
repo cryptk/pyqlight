@@ -5,6 +5,10 @@ A python interface for Q-Light warning light towers.  Includes both a module
 which can be included as well as a command line utility suitable for one-shot
 controls.
 
+Before submutting a Pull request
+================================
+Make sure that your code meets the style and quality guidelines within the HACKING file
+
 LIMITATIONS
 ===========
 
@@ -22,7 +26,7 @@ USAGE
 =====
 ```
 usage: pyqlight [-h] [-r [STATE]] [-y [STATE]] [-g [STATE]] [-b [STATE]]
-               [-w [STATE]] [-a [STATE]] [-t [TONE]] [-d [DURATION]]
+                [-w [STATE]] [-a [STATE]] [-t [TONE]] [-d [DURATION]]
 
 control a Q-Light warning tower. All lamps should have red, yellow and green
 lights available. Blue and white lights may or may not be available depending
