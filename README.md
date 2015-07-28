@@ -7,7 +7,8 @@ controls.
 
 Before submutting a Pull request
 ================================
-Make sure that your code meets the style and quality guidelines within the HACKING file
+Make sure that your code meets the style and quality guidelines within the
+HACKING file.
 
 LIMITATIONS
 ===========
@@ -22,6 +23,12 @@ reliably add this functionality.
 
 There is no way to poll the light for it's current state that I can determine.
 This appears to be a limitation of the Q-Lights themselves.
+
+The code must be run as root to access the USB devices.  The exception is
+systems that use udev.  For those, you can place the included
+udev/80-q-light.rules into /etc/udev/rules.d and then replug the device.  As
+long as your user account is in the plugdev group, you will then be able to
+control the light as a non-root user.
 
 USAGE
 =====
