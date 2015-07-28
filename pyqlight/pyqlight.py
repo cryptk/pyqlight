@@ -84,7 +84,7 @@ class QLight(object):
         self.sound = 'pass'
 
         self._usbdev = hid.Device(vid=1240, pid=59196)
-        assert self._usbdev is isinstance(hid.Device)
+        assert isinstance(self._usbdev, hid.Device)
 
     def update_lamp(self):
         """Generate the hexadecimal state string and update the lamp.
