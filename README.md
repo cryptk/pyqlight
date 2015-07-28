@@ -12,7 +12,8 @@ Make sure that your code meets the style and quality guidelines within the HACKI
 LIMITATIONS
 ===========
 
-This code may or may not work on a mac.
+This code may or may not work on a Mac... if you can verify this, or provide a
+method to get it working on a Mac, please let me know.
 It has only ever been tested on Ubuntu (15.04).
 
 If more than one lamp is connected to the system, there is no way to determine
